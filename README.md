@@ -205,3 +205,85 @@ After running `npx cdk synth` you can see the problem. Open the file `cdk.out/cr
  }
 }
 ```
+
+Also the action in the pipeline references the wrong region:
+
+```json
+      "Actions": [
+       {
+        "ActionTypeId": {
+         "Category": "Deploy",
+         "Owner": "AWS",
+         "Provider": "CloudFormation",
+         "Version": "1"
+        },
+        "Configuration": {
+         "StackName": "MyTenantStage-MyTenantPipeline-support-us-east-1",
+         "Capabilities": "CAPABILITY_NAMED_IAM,CAPABILITY_AUTO_EXPAND",
+         "RoleArn": {
+          "Fn::Join": [
+           "",
+           [
+            "arn:",
+            {
+             "Ref": "AWS::Partition"
+            },
+            ":iam::111111111111:role/cdk-hnb659fds-cfn-exec-role-111111111111-eu-central"
+           ]
+          ]
+         },
+         "ActionMode": "CHANGE_SET_REPLACE",
+         "ChangeSetName": "PipelineChange",
+         "TemplatePath": "Synth_Output::assembly-MyApplicationStack-MyTenantStage/MyApplicationStackMyTenantStagecrossregionstack111111111111useast18429F301.template.json"
+        },
+        "InputArtifacts": [
+         {
+          "Name": "Synth_Output"
+         }
+        ],
+        "Name": "MyTenantPipeline-support-us-east-1.Prepare",
+        "Region": "us-east-1",
+        "RoleArn": {
+         "Fn::Join": [
+          "",
+          [
+           "arn:",
+           {
+            "Ref": "AWS::Partition"
+           },
+           ":iam::111111111111:role/cdk-hnb659fds-deploy-role-111111111111-eu-central"
+          ]
+         ]
+        },
+        "RunOrder": 1
+       },
+       {
+        "ActionTypeId": {
+         "Category": "Deploy",
+         "Owner": "AWS",
+         "Provider": "CloudFormation",
+         "Version": "1"
+        },
+        "Configuration": {
+         "StackName": "MyTenantStage-MyTenantPipeline-support-us-east-1",
+         "ActionMode": "CHANGE_SET_EXECUTE",
+         "ChangeSetName": "PipelineChange"
+        },
+        "Name": "MyTenantPipeline-support-us-east-1.Deploy",
+        "Region": "us-east-1",
+        "RoleArn": {
+         "Fn::Join": [
+          "",
+          [
+           "arn:",
+           {
+            "Ref": "AWS::Partition"
+           },
+           ":iam::111111111111:role/cdk-hnb659fds-deploy-role-111111111111-eu-central"
+          ]
+         ]
+        },
+        "RunOrder": 2
+       }
+      ]
+```
