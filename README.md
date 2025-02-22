@@ -2,7 +2,7 @@
 
 This CDK application deploys a pipeline (call it A) into an account (000000000000) in eu-central-1 which in turn deploys another pipeline in a tenant account (111111111111) in the same region. The pipeline (call it T) in the tenant account has a cross region deployment and requires a cross region support stack. Because of that the application A should also deploy a cross region support stack to deploy the cross region support stack for the tenant account.
 
-After running `npx cdk synth` you can see the problem. Open the file `cdk.out/cross-region-stack-000000000000:us-east-1.template.json`. The KMS Key policy and the bucket resource policy reference roles in `eu-central-1` instead of `us-east-1`. This results in permissions error during deployment.
+After running `npx cdk synth` you can see the problem. Open the file `cdk.out/cross-region-stack-000000000000:us-east-1.template.json`. The KMS Key policy and the bucket resource policy reference roles in `eu-central-1` instead of `us-east-1`. Also the action in the pipeline that deploys the cross region stack for the tenant references the wrong regin in the role names. This results in permissions error during deployment.
 
 ```json
 {
