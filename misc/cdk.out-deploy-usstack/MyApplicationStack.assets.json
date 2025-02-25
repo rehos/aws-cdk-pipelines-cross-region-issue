@@ -1,0 +1,20 @@
+{
+  "version": "39.0.0",
+  "files": {
+    "0434bfdf0ff79e358315af1265aa9100ce186eb232fe9a3e0198148879f268fd": {
+      "source": {
+        "path": "MyApplicationStack.template.json",
+        "packaging": "file"
+      },
+      "destinations": {
+        "000000000000-eu-central-1": {
+          "bucketName": "cdk-hnb659fds-assets-000000000000-eu-central-1",
+          "objectKey": "0434bfdf0ff79e358315af1265aa9100ce186eb232fe9a3e0198148879f268fd.json",
+          "region": "eu-central-1",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::000000000000:role/cdk-hnb659fds-file-publishing-role-000000000000-eu-central-1"
+        }
+      }
+    }
+  },
+  "dockerImages": {}
+}

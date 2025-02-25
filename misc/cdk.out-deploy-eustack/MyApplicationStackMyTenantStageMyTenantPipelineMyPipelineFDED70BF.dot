@@ -1,0 +1,47 @@
+digraph G {
+  # Arrows represent an "unlocks" relationship (opposite of dependency). So chosen
+  # because the layout looks more natural that way.
+  # To represent subgraph dependencies, subgraphs are represented by BEGIN/END nodes.
+  # To render: `dot -Tsvg MyApplicationStackMyTenantStageMyTenantPipelineMyPipelineFDED70BF.dot > graph.svg`, open in a browser.
+  node [shape="box"];
+"BEGIN Build" [shape="cds", style="filled", fillcolor="#b7deff"];
+"END Build" [shape="cds", style="filled", fillcolor="#b7deff"];
+"Build.Synth";
+"Source.my-org/my-app" -> "Build.Synth";
+"BEGIN Build" -> "Build.Synth";
+"Build.Synth" -> "END Build";
+"BEGIN UpdatePipeline" [shape="cds", style="filled", fillcolor="#b7deff"];
+"END UpdatePipeline" [shape="cds", style="filled", fillcolor="#b7deff"];
+"UpdatePipeline.SelfMutate";
+"Build.Synth" -> "UpdatePipeline.SelfMutate";
+"BEGIN UpdatePipeline" -> "UpdatePipeline.SelfMutate";
+"UpdatePipeline.SelfMutate" -> "END UpdatePipeline";
+"BEGIN MyTenantStage-MyTenantApplicationStage" [shape="cds", style="filled", fillcolor="#b7deff"];
+"END MyTenantStage-MyTenantApplicationStage" [shape="cds", style="filled", fillcolor="#b7deff"];
+"UpdatePipeline.SelfMutate" -> "BEGIN MyTenantStage-MyTenantApplicationStage";
+"BEGIN MyTenantStage-MyTenantApplicationStage.MyTenantApplicationEUStack" [shape="cds", style="filled", fillcolor="#b7deff"];
+"END MyTenantStage-MyTenantApplicationStage.MyTenantApplicationEUStack" [shape="cds", style="filled", fillcolor="#b7deff"];
+"MyTenantStage-MyTenantApplicationStage.MyTenantApplicationEUStack.Deploy";
+"MyTenantStage-MyTenantApplicationStage.MyTenantApplicationEUStack.Prepare" -> "MyTenantStage-MyTenantApplicationStage.MyTenantApplicationEUStack.Deploy";
+"MyTenantStage-MyTenantApplicationStage.MyTenantApplicationEUStack.Prepare";
+"Build.Synth" -> "MyTenantStage-MyTenantApplicationStage.MyTenantApplicationEUStack.Prepare";
+"BEGIN MyTenantStage-MyTenantApplicationStage.MyTenantApplicationEUStack" -> "MyTenantStage-MyTenantApplicationStage.MyTenantApplicationEUStack.Prepare";
+"MyTenantStage-MyTenantApplicationStage.MyTenantApplicationEUStack.Deploy" -> "END MyTenantStage-MyTenantApplicationStage.MyTenantApplicationEUStack";
+"BEGIN MyTenantStage-MyTenantApplicationStage.MyTenantApplicationUSStack" [shape="cds", style="filled", fillcolor="#b7deff"];
+"END MyTenantStage-MyTenantApplicationStage.MyTenantApplicationUSStack" [shape="cds", style="filled", fillcolor="#b7deff"];
+"MyTenantStage-MyTenantApplicationStage.MyTenantApplicationUSStack.Deploy";
+"MyTenantStage-MyTenantApplicationStage.MyTenantApplicationUSStack.Prepare" -> "MyTenantStage-MyTenantApplicationStage.MyTenantApplicationUSStack.Deploy";
+"MyTenantStage-MyTenantApplicationStage.MyTenantApplicationUSStack.Prepare";
+"Build.Synth" -> "MyTenantStage-MyTenantApplicationStage.MyTenantApplicationUSStack.Prepare";
+"BEGIN MyTenantStage-MyTenantApplicationStage.MyTenantApplicationUSStack" -> "MyTenantStage-MyTenantApplicationStage.MyTenantApplicationUSStack.Prepare";
+"MyTenantStage-MyTenantApplicationStage.MyTenantApplicationUSStack.Deploy" -> "END MyTenantStage-MyTenantApplicationStage.MyTenantApplicationUSStack";
+"BEGIN MyTenantStage-MyTenantApplicationStage" -> "BEGIN MyTenantStage-MyTenantApplicationStage.MyTenantApplicationEUStack";
+"BEGIN MyTenantStage-MyTenantApplicationStage" -> "BEGIN MyTenantStage-MyTenantApplicationStage.MyTenantApplicationUSStack";
+"END MyTenantStage-MyTenantApplicationStage.MyTenantApplicationEUStack" -> "END MyTenantStage-MyTenantApplicationStage";
+"END MyTenantStage-MyTenantApplicationStage.MyTenantApplicationUSStack" -> "END MyTenantStage-MyTenantApplicationStage";
+"BEGIN Source" [shape="cds", style="filled", fillcolor="#b7deff"];
+"END Source" [shape="cds", style="filled", fillcolor="#b7deff"];
+"Source.my-org/my-app";
+"BEGIN Source" -> "Source.my-org/my-app";
+"Source.my-org/my-app" -> "END Source";
+}

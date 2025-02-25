@@ -1,0 +1,46 @@
+digraph G {
+  # Arrows represent an "unlocks" relationship (opposite of dependency). So chosen
+  # because the layout looks more natural that way.
+  # To represent subgraph dependencies, subgraphs are represented by BEGIN/END nodes.
+  # To render: `dot -Tsvg MyApplicationStackMyApplicationPipelineC1D929B4.dot > graph.svg`, open in a browser.
+  node [shape="box"];
+"BEGIN Build" [shape="cds", style="filled", fillcolor="#b7deff"];
+"END Build" [shape="cds", style="filled", fillcolor="#b7deff"];
+"Build.Synth";
+"Source.my-org/my-app" -> "Build.Synth";
+"BEGIN Build" -> "Build.Synth";
+"Build.Synth" -> "END Build";
+"BEGIN UpdatePipeline" [shape="cds", style="filled", fillcolor="#b7deff"];
+"END UpdatePipeline" [shape="cds", style="filled", fillcolor="#b7deff"];
+"UpdatePipeline.SelfMutate";
+"Build.Synth" -> "UpdatePipeline.SelfMutate";
+"BEGIN UpdatePipeline" -> "UpdatePipeline.SelfMutate";
+"UpdatePipeline.SelfMutate" -> "END UpdatePipeline";
+"BEGIN MyTenantStage" [shape="cds", style="filled", fillcolor="#b7deff"];
+"END MyTenantStage" [shape="cds", style="filled", fillcolor="#b7deff"];
+"UpdatePipeline.SelfMutate" -> "BEGIN MyTenantStage";
+"BEGIN MyTenantStage.MyTenantPipeline-support-us-east-1" [shape="cds", style="filled", fillcolor="#b7deff"];
+"END MyTenantStage.MyTenantPipeline-support-us-east-1" [shape="cds", style="filled", fillcolor="#b7deff"];
+"MyTenantStage.MyTenantPipeline-support-us-east-1.Deploy";
+"MyTenantStage.MyTenantPipeline-support-us-east-1.Prepare" -> "MyTenantStage.MyTenantPipeline-support-us-east-1.Deploy";
+"MyTenantStage.MyTenantPipeline-support-us-east-1.Prepare";
+"Build.Synth" -> "MyTenantStage.MyTenantPipeline-support-us-east-1.Prepare";
+"BEGIN MyTenantStage.MyTenantPipeline-support-us-east-1" -> "MyTenantStage.MyTenantPipeline-support-us-east-1.Prepare";
+"MyTenantStage.MyTenantPipeline-support-us-east-1.Deploy" -> "END MyTenantStage.MyTenantPipeline-support-us-east-1";
+"BEGIN MyTenantStage.MyTenantPipeline" [shape="cds", style="filled", fillcolor="#b7deff"];
+"END MyTenantStage.MyTenantPipeline" [shape="cds", style="filled", fillcolor="#b7deff"];
+"END MyTenantStage.MyTenantPipeline-support-us-east-1" -> "BEGIN MyTenantStage.MyTenantPipeline";
+"MyTenantStage.MyTenantPipeline.Deploy";
+"MyTenantStage.MyTenantPipeline.Prepare" -> "MyTenantStage.MyTenantPipeline.Deploy";
+"MyTenantStage.MyTenantPipeline.Prepare";
+"Build.Synth" -> "MyTenantStage.MyTenantPipeline.Prepare";
+"BEGIN MyTenantStage.MyTenantPipeline" -> "MyTenantStage.MyTenantPipeline.Prepare";
+"MyTenantStage.MyTenantPipeline.Deploy" -> "END MyTenantStage.MyTenantPipeline";
+"BEGIN MyTenantStage" -> "BEGIN MyTenantStage.MyTenantPipeline-support-us-east-1";
+"END MyTenantStage.MyTenantPipeline" -> "END MyTenantStage";
+"BEGIN Source" [shape="cds", style="filled", fillcolor="#b7deff"];
+"END Source" [shape="cds", style="filled", fillcolor="#b7deff"];
+"Source.my-org/my-app";
+"BEGIN Source" -> "Source.my-org/my-app";
+"Source.my-org/my-app" -> "END Source";
+}

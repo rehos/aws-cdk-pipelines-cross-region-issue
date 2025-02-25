@@ -1,0 +1,145 @@
+{
+  "version": "39.0.0",
+  "artifacts": {
+    "MyApplicationStackMyTenantStageMyTenantPipelineMyTenantApplicationStageMyTenantApplicationEUStack83B85381.assets": {
+      "type": "cdk:asset-manifest",
+      "properties": {
+        "file": "MyApplicationStackMyTenantStageMyTenantPipelineMyTenantApplicationStageMyTenantApplicationEUStack83B85381.assets.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+      }
+    },
+    "MyApplicationStackMyTenantStageMyTenantPipelineMyTenantApplicationStageMyTenantApplicationEUStack83B85381": {
+      "type": "aws:cloudformation:stack",
+      "environment": "aws://111111111111/eu-central-1",
+      "properties": {
+        "templateFile": "MyApplicationStackMyTenantStageMyTenantPipelineMyTenantApplicationStageMyTenantApplicationEUStack83B85381.template.json",
+        "terminationProtection": false,
+        "validateOnSynth": true,
+        "assumeRoleArn": "arn:${AWS::Partition}:iam::111111111111:role/cdk-hnb659fds-deploy-role-111111111111-eu-central-1",
+        "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::111111111111:role/cdk-hnb659fds-cfn-exec-role-111111111111-eu-central-1",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-111111111111-eu-central-1/004e5272654fd129c3fdcbeca2478662b97f9b8c4944aa2f685238562fc7e40b.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
+        "additionalDependencies": [
+          "MyApplicationStackMyTenantStageMyTenantPipelineMyTenantApplicationStageMyTenantApplicationEUStack83B85381.assets"
+        ],
+        "lookupRole": {
+          "arn": "arn:${AWS::Partition}:iam::111111111111:role/cdk-hnb659fds-lookup-role-111111111111-eu-central-1",
+          "requiresBootstrapStackVersion": 8,
+          "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+        },
+        "stackName": "MyTenantStage-MyTenantApplicationStage-MyTenantApplicationEUStack"
+      },
+      "dependencies": [
+        "MyApplicationStackMyTenantStageMyTenantPipelineMyTenantApplicationStageMyTenantApplicationEUStack83B85381.assets"
+      ],
+      "metadata": {
+        "/MyApplicationStack/MyTenantStage/MyTenantPipeline/MyTenantApplicationStage/MyTenantApplicationEUStack/MyTenantApplicationParameter": [
+          {
+            "type": "aws:cdk:analytics:construct",
+            "data": {
+              "parameterName": "*",
+              "stringValue": "*"
+            }
+          }
+        ],
+        "/MyApplicationStack/MyTenantStage/MyTenantPipeline/MyTenantApplicationStage/MyTenantApplicationEUStack/MyTenantApplicationParameter/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MyTenantApplicationParameterC6021702"
+          }
+        ],
+        "/MyApplicationStack/MyTenantStage/MyTenantPipeline/MyTenantApplicationStage/MyTenantApplicationEUStack/CDKMetadata/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadata"
+          }
+        ],
+        "/MyApplicationStack/MyTenantStage/MyTenantPipeline/MyTenantApplicationStage/MyTenantApplicationEUStack/BootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BootstrapVersion"
+          }
+        ],
+        "/MyApplicationStack/MyTenantStage/MyTenantPipeline/MyTenantApplicationStage/MyTenantApplicationEUStack/CheckBootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CheckBootstrapVersion"
+          }
+        ]
+      },
+      "displayName": "MyApplicationStack/MyTenantStage/MyTenantPipeline/MyTenantApplicationStage/MyTenantApplicationEUStack"
+    },
+    "MyApplicationStackMyTenantStageMyTenantPipelineMyTenantApplicationStageMyTenantApplicationUSStack7CBE5FA0.assets": {
+      "type": "cdk:asset-manifest",
+      "properties": {
+        "file": "MyApplicationStackMyTenantStageMyTenantPipelineMyTenantApplicationStageMyTenantApplicationUSStack7CBE5FA0.assets.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+      }
+    },
+    "MyApplicationStackMyTenantStageMyTenantPipelineMyTenantApplicationStageMyTenantApplicationUSStack7CBE5FA0": {
+      "type": "aws:cloudformation:stack",
+      "environment": "aws://111111111111/us-east-1",
+      "properties": {
+        "templateFile": "MyApplicationStackMyTenantStageMyTenantPipelineMyTenantApplicationStageMyTenantApplicationUSStack7CBE5FA0.template.json",
+        "terminationProtection": false,
+        "validateOnSynth": true,
+        "assumeRoleArn": "arn:${AWS::Partition}:iam::111111111111:role/cdk-hnb659fds-deploy-role-111111111111-us-east-1",
+        "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::111111111111:role/cdk-hnb659fds-cfn-exec-role-111111111111-us-east-1",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-111111111111-us-east-1/c1364d73dfc3afde9152445ad1ef94691362189c58ca624682dcba67044b3bdc.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
+        "additionalDependencies": [
+          "MyApplicationStackMyTenantStageMyTenantPipelineMyTenantApplicationStageMyTenantApplicationUSStack7CBE5FA0.assets"
+        ],
+        "lookupRole": {
+          "arn": "arn:${AWS::Partition}:iam::111111111111:role/cdk-hnb659fds-lookup-role-111111111111-us-east-1",
+          "requiresBootstrapStackVersion": 8,
+          "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+        },
+        "stackName": "MyTenantStage-MyTenantApplicationStage-MyTenantApplicationUSStack"
+      },
+      "dependencies": [
+        "MyApplicationStackMyTenantStageMyTenantPipelineMyTenantApplicationStageMyTenantApplicationUSStack7CBE5FA0.assets"
+      ],
+      "metadata": {
+        "/MyApplicationStack/MyTenantStage/MyTenantPipeline/MyTenantApplicationStage/MyTenantApplicationUSStack/MyTenantApplicationParameter": [
+          {
+            "type": "aws:cdk:analytics:construct",
+            "data": {
+              "parameterName": "*",
+              "stringValue": "*"
+            }
+          }
+        ],
+        "/MyApplicationStack/MyTenantStage/MyTenantPipeline/MyTenantApplicationStage/MyTenantApplicationUSStack/MyTenantApplicationParameter/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MyTenantApplicationParameterC6021702"
+          }
+        ],
+        "/MyApplicationStack/MyTenantStage/MyTenantPipeline/MyTenantApplicationStage/MyTenantApplicationUSStack/CDKMetadata/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadata"
+          }
+        ],
+        "/MyApplicationStack/MyTenantStage/MyTenantPipeline/MyTenantApplicationStage/MyTenantApplicationUSStack/BootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BootstrapVersion"
+          }
+        ],
+        "/MyApplicationStack/MyTenantStage/MyTenantPipeline/MyTenantApplicationStage/MyTenantApplicationUSStack/CheckBootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CheckBootstrapVersion"
+          }
+        ]
+      },
+      "displayName": "MyApplicationStack/MyTenantStage/MyTenantPipeline/MyTenantApplicationStage/MyTenantApplicationUSStack"
+    }
+  }
+}

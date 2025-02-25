@@ -1,0 +1,20 @@
+{
+  "version": "39.0.0",
+  "files": {
+    "4b68ccc61e1be6e69e55b35300444297ee1a52733f8621f79535a08df810f312": {
+      "source": {
+        "path": "MyApplicationStackMyTenantStageMyTenantPipelineD80EE3D3.template.json",
+        "packaging": "file"
+      },
+      "destinations": {
+        "111111111111-eu-central-1": {
+          "bucketName": "cdk-hnb659fds-assets-111111111111-eu-central-1",
+          "objectKey": "4b68ccc61e1be6e69e55b35300444297ee1a52733f8621f79535a08df810f312.json",
+          "region": "eu-central-1",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::111111111111:role/cdk-hnb659fds-file-publishing-role-111111111111-eu-central-1"
+        }
+      }
+    }
+  },
+  "dockerImages": {}
+}
